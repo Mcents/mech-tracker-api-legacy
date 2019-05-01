@@ -10,7 +10,7 @@ RSpec.describe 'Users Api', tpye: :request do
         email: 'test2@test.com'
       }
 
-      post '/signup', params: params
+      post users_path, params: params
 
       expect(response.status).to eq(200)
       expect(JSON.parse(response.body)).to eq({"message"=>"Account Created"})
@@ -22,10 +22,26 @@ RSpec.describe 'Users Api', tpye: :request do
         password: 'tester123',
       }
 
-      post '/signup', params: params
+      post users_path, params: params
 
       expect(response.status).to eq(422)
       expect(JSON.parse(response.body)).to eq({"message"=>"Account Not Created"})
+    end
+  end
+
+  describe 'PUT users' do
+    it 'updates a user' do
+      user = create(:user)
+
+      params = {
+        username: 'mikec',
+        email: 'test2@test.com'
+      }
+
+      put "/users/#{user.id}", params: params
+
+      expect(response.status).to eq(200)
+      expect(JSON.parse(response.body)).to eq({"message"=>"Account Updated"})
     end
   end
 end

@@ -10,6 +10,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      response = {message: "Account Updated"}
+      render json: response
+    else
+      render json: {message: "Account Not Updated"}, status: 422
+    end
+  end
+
   private
 
   def user_params
