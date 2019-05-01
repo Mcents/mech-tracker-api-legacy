@@ -44,4 +44,14 @@ RSpec.describe 'Users Api', tpye: :request do
       expect(JSON.parse(response.body)).to eq({"message"=>"Account Updated"})
     end
   end
+
+  describe 'GET users' do
+    it 'gets a user' do
+      user = create(:user)
+
+      get "/users/#{user.id}"
+
+      expect(response.status).to eq(200)
+    end
+  end
 end
