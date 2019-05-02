@@ -54,4 +54,19 @@ RSpec.describe 'Users Api', tpye: :request do
       expect(response.status).to eq(200)
     end
   end
+
+  describe 'POST users login' do
+    it 'logs a user in' do
+      user = create(:user, password: '123')
+
+      params = {
+        email: user.email,
+        password: user.password
+      }
+
+      post "/users/login",  params: params
+
+      expect(response.status).to eq(200)
+    end
+  end
 end
