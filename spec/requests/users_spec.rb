@@ -29,32 +29,6 @@ RSpec.describe 'Users Api', tpye: :request do
     end
   end
 
-  describe 'PUT users' do
-    it 'updates a user' do
-      user = create(:user)
-
-      params = {
-        username: 'mikec',
-        email: 'test2@test.com'
-      }
-
-      put "/users/#{user.id}", params: params
-
-      expect(response.status).to eq(200)
-      expect(JSON.parse(response.body)).to eq({"message"=>"Account Updated"})
-    end
-  end
-
-  describe 'GET users' do
-    it 'gets a user' do
-      user = create(:user)
-
-      get "/users/#{user.id}"
-
-      expect(response.status).to eq(200)
-    end
-  end
-
   describe 'POST users login' do
     it 'logs a user in' do
       user = create(:user, password: '123')
