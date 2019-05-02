@@ -8,6 +8,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv-rails'
+gem 'bcrypt'
 
 
 group :development, :test do
@@ -17,6 +18,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'vcr'
   gem 'webmock'
+  gem 'factory_bot_rails'
 end
 
 group :development do
