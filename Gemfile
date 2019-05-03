@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv-rails'
 gem 'bcrypt'
 gem 'jwt'
+gem 'httparty'
 
 
 group :development, :test do
