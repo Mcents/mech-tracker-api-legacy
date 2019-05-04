@@ -1,15 +1,13 @@
+require "reddit/api"
+
 class RedditService
-  include HTTParty
-  base_uri 'http://www.reddit.com/r'
+  attr_reader :user
 
   def initialize
-  end
-
-  def parse(response)
-    JSON.parse(response.body, symbolize_names: true)
+    @user = Reddit::Services::User.new ENV['REDDIT_USERNAME'], ENV['REDDIT_PASSWORD'], ENV['REDDIT_SCRIPT'], ENV['REDDIT_SECRET'], "web:mechtrackerv1.0(by/u/#{ENV['REDDIT_USERNAME']}"
   end
 
   def post
-    parse(self.class.get('/mechmarket/new.json?sort=new&limit=20'))
+    Reddit::Services::Listings.get_new user, basepath_subreddit: "mechmarket", limit:20
   end
 end
