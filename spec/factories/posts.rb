@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :post do
-    term { "MyString" }
-    user { nil }
+    wanting_terms { "MyString" }
+    buying_terms { "MyString" }
+    url { "MyString" }
+    location { "MyString" }
   end
 end
