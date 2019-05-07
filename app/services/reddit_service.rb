@@ -1,13 +1,21 @@
-require "reddit/api"
-
 class RedditService
-  attr_reader :user
 
   def initialize
-    @user = Reddit::Services::User.new ENV['REDDIT_USERNAME'], ENV['REDDIT_PASSWORD'], ENV['REDDIT_SCRIPT'], ENV['REDDIT_SECRET'], "web:mechtrackerv1.0(by/u/#{ENV['REDDIT_USERNAME']}"
+    @conn = Faraday.new(:url => 'https://www.reddit.com') do |faraday|
+      faraday.adapter Faraday.default_adapter
+    end
   end
 
   def post
-    Reddit::Services::Listings.get_new user, basepath_subreddit: "mechmarket", limit:20
+    response = @conn.get do |req|
+      req.url 'r/mechmarket/new.json'
+      req.params['limit'] = 20
+      req.headers['User-Agent'] = "web:mechtrackerv1.0(by/u/#{ENV['REDDIT_USERNAME']})"
+    end
+    parse(response.body)
+  end
+
+  def parse(response)
+    JSON.parse(response, symbolize_names: true)
   end
 end

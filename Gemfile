@@ -10,8 +10,7 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt'
 gem 'jwt'
-gem 'httparty'
-gem 'reddit-api'
+gem 'faraday'
 
 
 group :development, :test do
