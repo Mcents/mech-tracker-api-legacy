@@ -4,5 +4,6 @@ FactoryBot.define do
     buying_terms { "MyString" }
     url { "MyString" }
     location { "MyString" }
+    title { "MyString" }
   end
 end

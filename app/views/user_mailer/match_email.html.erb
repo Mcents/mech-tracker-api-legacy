@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @user.username %></h1>
+    <p>
+      We have found a match for <%= @term.keyword %>
+      <%= @match.title %>
+      <%= @match.url %>
+    </p>
+    <p>Thanks!</p>
+  </body>
+</html>
