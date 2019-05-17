@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_05_04_160229) do
 
   create_table "posts", force: :cascade do |t|
     t.string "wanting_terms"
+    t.string "title"
     t.string "buying_terms"
     t.string "url"
     t.string "location"
