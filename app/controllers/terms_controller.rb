@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class TermsController < ApplicationController
-  before_action :authenticate_request!, only: [:create, :index, :destroy]
+  before_action :authenticate_request!, only: %i[create index destroy]
 
   def create
     term = @current_user.terms.create(term_params)
     if term.save
-      render json: {message: "Term Created"}
+      render json: { message: 'Term Created' }
     else
-      render json: {message: "Term Not Created"}, status: 422
+      render json: { message: 'Term Not Created' }, status: 422
     end
   end
 
@@ -18,9 +20,9 @@ class TermsController < ApplicationController
   def destroy
     term = Term.find(params[:id])
     if term.destroy
-      render json: {message: "Term Deleted"}
+      render json: { message: 'Term Deleted' }
     else
-      render json: {message: "Term Not Deleted"}, status: 422
+      render json: { message: 'Term Not Deleted' }, status: 422
     end
   end
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class ApplicationController < ActionController::API
   require 'json_web_token'
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::API
   end
 
   def invalid_authentication
-    render json: {error: 'Invalid Request'}, status: :unauthorized
+    render json: { error: 'Invalid Request' }, status: :unauthorized
   end
 
   private
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::API
     auth_header = request.headers['Authorization']
     token = auth_header.split(' ').last
     JsonWebToken.decode(token)
-  rescue
+  rescue StandardError
     nil
   end
 
