@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require './app/mailers/user_mailer.rb'
 
 class BuildPosts
-
   def posts
     response = RedditService.new.post
     response[:data][:children].each do |pos|

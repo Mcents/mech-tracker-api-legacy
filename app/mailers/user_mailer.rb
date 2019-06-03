@@ -1,5 +1,6 @@
-class UserMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class UserMailer < ApplicationMailer
   def match_email
     @user = params[:user]
     @term = params[:term]

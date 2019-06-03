@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
   has_many :terms
@@ -8,6 +10,6 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   def downcase_email
-    self.email.downcase!
+    email.downcase!
   end
 end

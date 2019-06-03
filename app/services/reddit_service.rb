@@ -1,7 +1,8 @@
-class RedditService
+# frozen_string_literal: true
 
+class RedditService
   def initialize
-    @conn = Faraday.new(:url => 'https://www.reddit.com') do |faraday|
+    @conn = Faraday.new(url: 'https://www.reddit.com') do |faraday|
       faraday.adapter Faraday.default_adapter
     end
   end

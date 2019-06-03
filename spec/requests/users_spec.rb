@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Users Api', tpye: :request do
   describe 'POST users' do
     it 'creates a user' do
-
       params = {
         username: 'mikecd',
         password: 'tester123',
@@ -13,19 +14,19 @@ RSpec.describe 'Users Api', tpye: :request do
       post users_path, params: params
 
       expect(response.status).to eq(200)
-      expect(JSON.parse(response.body)).to eq({"message"=>"Account Created"})
+      expect(JSON.parse(response.body)).to eq('message' => 'Account Created')
     end
 
     it 'fails to create a user' do
       params = {
         username: 'mikec',
-        password: 'tester123',
+        password: 'tester123'
       }
 
       post users_path, params: params
 
       expect(response.status).to eq(422)
-      expect(JSON.parse(response.body)).to eq({"message"=>"Account Not Created"})
+      expect(JSON.parse(response.body)).to eq('message' => 'Account Not Created')
     end
   end
 
@@ -38,7 +39,7 @@ RSpec.describe 'Users Api', tpye: :request do
         password: user.password
       }
 
-      post "/users/login",  params: params
+      post '/users/login', params: params
 
       expect(response.status).to eq(200)
     end
