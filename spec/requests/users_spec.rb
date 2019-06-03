@@ -5,7 +5,7 @@ RSpec.describe 'Users Api', tpye: :request do
     it 'creates a user' do
 
       params = {
-        username: 'mikec',
+        username: 'mikecd',
         password: 'tester123',
         email: 'test2@test.com'
       }

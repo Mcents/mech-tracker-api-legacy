@@ -11,6 +11,7 @@ class BuildPosts
                   location: pos[:data][:title].split('[H]').first.strip,
                   url: pos[:data][:url])
     end
+    Post.limit(20).destroy_all if Post.count > 20
     search_posts
   end
 
