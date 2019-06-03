@@ -6,7 +6,6 @@ class TermsController < ApplicationController
   def create
     term = @current_user.terms.create(term_params)
     if term.save
-      RedditWorker.perform_async
       render json: { message: 'Term Created' }
     else
       render json: { message: 'Term Not Created' }, status: 422
